@@ -1,3 +1,4 @@
 let baralho = []
+let FlashCard = []
 
-module.exports = {baralho,}
+module.exports = {baralho, FlashCard}

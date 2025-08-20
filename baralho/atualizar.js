@@ -2,7 +2,7 @@ const prompt = require('../prompt/prompt');
 const { baralho } = require("../data");
 const listarBaralho = require("./listarBaralho");
 
-function atualizar(){
+function atualizarBaralho(){
     listarBaralho()
 
     let escolha = prompt('Selecione um baralho: ') - 1;
@@ -15,4 +15,4 @@ function atualizar(){
  console.log('\nBaralho atualizado com sucesso!\n'); return; 
 }
 
-module.exports = atualizar
+module.exports = atualizarBaralho

@@ -6,10 +6,12 @@ function criarBaralho(){
     let id = Date.now()
     let nome = prompt('Título do Baralho: ')
     baralho.push({
-        id : id,
+        id: id,
+        baralhoid : id,
         nome: nome,
-        flashCard : []
     })
+    console.log("\n Baralho criado com sucesso!\n");
+    
 }
 
 

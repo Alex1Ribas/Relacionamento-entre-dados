@@ -1,5 +1,5 @@
 const prompt = require('../prompt/prompt');
-const baralho = require('../data');
+const { baralho, FlashCard }= require('../data');
 const listarBaralho = require('../baralho/listarBaralho');
 
 function criarFlashCard() {
@@ -11,20 +11,20 @@ function criarFlashCard() {
         console.log('Escolha um índice válido');
         return;  
     }
-
+    const baralhoescolha = baralho[escolha];
     let pergunta = prompt('Seu flashcard: ');
     let resposta = prompt('Resposta: ');
 
-    for (let i = 0; i < baralho[escolha].flashCard.length; i++) {
-        let flashcardExistente = baralho[escolha].flashCard[i];
-        if (flashcardExistente.pergunta === pergunta && flashcardExistente.resposta === resposta) {
+    for (let i = 0; i < FlashCard.length; i++) {
+        if (FlashCard[i].pergunta == pergunta || FlashCard[i].resposta == resposta) {
             console.log('Este flashcard já existe neste baralho!');
             return;
         }
     }
 
-    baralho[escolha].flashCard.push({
+    FlashCard.push({
         id: Date.now(),
+        baralhoid: baralhoescolha.baralhoid,
         pergunta: pergunta,
         resposta: resposta
     });

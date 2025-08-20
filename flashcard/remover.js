@@ -1,18 +1,18 @@
-const prompt = require('../prompt/prompt');
-const { baralho } = require("../data");
+const { baralho, FlashCard } = require("../data");
 const listarAll = require("./listarAll");
+const prompt = require('../prompt/prompt')
+function remove() {
+    listarAll();
 
-function remove(){
-    listarAll()
+    let escolha = parseInt(prompt('Selecione qual deseja apagar: ')) - 1;
 
-    let escolha = prompt('Selecione um baralho: ') - 1;
-        if ( isNaN(escolha) || escolha < 0 || escolha >= baralho.flashCard.length)
-        {console.log(" Escolha um indice valido!"); return;}
+    if (isNaN(escolha) || escolha < 0 || escolha >= FlashCard.length) {
+        console.log("Escolha inválida.");
+        return;
+    }
 
-    let confirmacao = prompt('Realmente deseja apagar o FlashCard: ' + baralho.flashCard[escolha] + " (s/n)?")
-    if (confirmacao.toLowerCase() === 's'){baralho.flashCard.splice(escolha, 1);
-        console.log('\n Removido com sucesso!\n');
-    } else {console.log('\nCancelando...\n');return} 
+    FlashCard.splice(escolha, 1);
+    console.log("Flashcard removido com sucesso!");
 }
 
 module.exports = remove

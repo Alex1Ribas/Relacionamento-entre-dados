@@ -1,7 +1,11 @@
+const atualizarBaralho = require('./baralho/atualizar');
 const criarBaralho = require('./baralho/criar');
 const listarBaralho = require('./baralho/listarBaralho');
 const removerBaralho = require('./baralho/remover');
-const remove = require('./baralho/remover');
+const remove = require('./flashcard/remover');
+const atualizarFlash = require('./flashcard/atualizar');
+const buscaPorBaralho = require('./flashcard/buscarPorBaralho');
+const buscarPorPergunta = require('./flashcard/buscarPorPergunta')
 const criarFlashCard = require('./flashcard/criar');
 const listarAll = require('./flashcard/listarAll');
 const listarFlashCardPorBaralho = require('./flashcard/listarFlashCardPorBaralho');
@@ -10,12 +14,13 @@ const prompt = require('./prompt/prompt')
 Menu()
 function Menu(){
     console.log(`
-                ---- MENU ----
-1. Criar Baralho                 6. Buscar por baralho
-2. Criar Falsh Card              7. Buscar Flash Card
-3. Listar Baralho                 8. Remover Baralho
-4. Listar Falsh Card              9. Remover Flash Card
-5. Listar Flash Car por Baralho    10. Sair
+----------------------------------- MENU ------------------------------------
+|1. Criar  Baralho       | 6.  Atualizar  Baralho   | 11. Remover FlashCard |
+|2. Criar  FalshCard     | 7.  Atualizar  FalshCard | X. Sair               |
+|3. Listar Baralho       | 8.  Buscar por Baralho   |                       |
+|4. Listar FalshCard     | 9.  Buscar     FlashCard |                       |
+|5. Listar por Baralho   | 10. Remover    Baralho   |                       |
+-----------------------------------------------------------------------------
 
 `);
 
@@ -38,18 +43,24 @@ switch (escolha) {
         listarFlashCardPorBaralho(); Menu();
         break
     case '6':
-        buscarPorBaralho(); Menu();
+        atualizarBaralho();Menu();
         break
     case '7':
-        buscarFlashCard(); Menu();
-        break
+        atualizarFlash();Menu();
     case '8':
-        removerBaralho();Menu();
+        buscaPorBaralho(); Menu();
         break
     case '9':
-        remove(); Menu();
+        buscarPorPergunta(); Menu();
         break
     case '10':
+        removerBaralho();Menu();
+        break
+    case '11':
+        remove(); Menu();
+        break
+    case 'x':
+    case 'X':
         console.log('\n Saindo...\n');
         process.exit();
 

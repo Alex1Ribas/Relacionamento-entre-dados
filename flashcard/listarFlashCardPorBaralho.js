@@ -1,5 +1,5 @@
 const listarBaralho = require("../baralho/listarBaralho");
-const { baralho } = require("../data");
+const { baralho, FlashCard } = require("../data");
 const prompt = require('../prompt/prompt');
 
 function listarFlashCardPorBaralho() {
@@ -12,13 +12,17 @@ function listarFlashCardPorBaralho() {
         return;
     }
 
-    if (baralho[escolha].flashCard.length === 0) {
+    const baralhoSelecionado = baralho[escolha];
+
+    const flashcardsDoBaralho = FlashCard.filter(f => f.baralhoid === baralhoSelecionado.baralhoid);
+
+    if (flashcardsDoBaralho.length === 0) {
         console.log("Este baralho não possui flashcards.");
         return;
     }
 
-    for (let i = 0; i < baralho[escolha].flashCard.length; i++) {
-        console.log(`${baralho[escolha].nome} - ${baralho[escolha].flashCard[i].pergunta} - ${baralho[escolha].flashCard[i].resposta}`);
+    for (let i = 0; i < flashcardsDoBaralho.length; i++) {
+        console.log(`${baralhoSelecionado.nome} - ${flashcardsDoBaralho[i].pergunta} - ${flashcardsDoBaralho[i].resposta}`);
     }
 }
 
